@@ -48,6 +48,10 @@ export default class Safe extends FloatingMenu {
         // Map of message ids to message text, used by networking and hotkeys
         this.safeMessagesMap = {}
         this.setSafeMessagesMap(this.crumbs.safe_messages)
+        
+        //Map of jokes
+        this.jokesMap = [];
+        this.setJokesMap(this.crumbs.jokes);
 
         this.subItems = []
 
@@ -66,7 +70,11 @@ export default class Safe extends FloatingMenu {
 
 
     /* START-USER-CODE */
-
+    setJokesMap(jokes){
+        for(let i = 0; i < jokes.length; i++){
+            this.jokesMap.push(jokes[i]);
+        }
+    }
     setSafeMessagesMap(messages) {
         for (let list of messages) {
             this.safeMessagesMap[list.id] = list.name
